@@ -1,0 +1,72 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
+use ieee.std_logic_arith.all;
+entity RegA is
+port(    clk,LoadA: in std_logic;
+DataAin: in std_logic_vector(15 downto 0); DataAout: out std_logic_vector(15 downto 0)
+);
+end entity RegA;
+architecture reg1 of RegA is
+signal tempA: std_logic_vector(15 downto 0);
+begin
+process(clk,LoadA)
+begin
+if rising_edge(clk) then
+if (LoadA = '1') then DataAout<=DataAin;
+tempA<=DataAin;
+elsif (LoadA = '0') then DataAout<=tempA;
+end if; 
+end if;
+end process;
+end reg1;
+
+//REG2
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
+use ieee.std_logic_arith.all;
+entity RegB is
+port(    
+clk,LoadB: in std_logic; 
+DataBin: in std_logic_vector(15 downto 0);
+DataBout: out std_logic_vector(15 downto 0)
+);
+end entity RegB;
+architecture reg2 of RegB is
+signal tempB: std_logic_vector(15 downto 0);
+begin
+process(clk,LoadB)
+begin
+if rising_edge(clk) then
+if (LoadB = '1') then DataBout<=DataBin; tempB<=DataBin;
+elsif (LoadB = '0') then DataBout<=tempB; 
+end if; 
+end if;
+end process;
+end reg2;
+ //REG3
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
+use ieee.std_logic_arith.all;
+entity RegC is
+port(    clk,LoadC: in std_logic;
+DataCin: in std_logic_vector(31 downto 0); DataCout: out std_logic_vector(31 downto 0)
+);
+end entity RegC;
+architecture reg3 of RegC is
+signal tempC: std_logic_vector(31 downto 0);
+begin
+process(clk,LoadC)
+begin
+if rising_edge(clk) then
+if (LoadC = '1') then DataCout<=DataCin; tempC<=DataCin;
+elsif (LoadC = '0') then 
+DataCout<=tempC; 
+end if;
+end if;
+end process;
+end reg3;
+ 
+
