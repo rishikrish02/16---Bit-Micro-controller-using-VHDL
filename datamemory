@@ -3,7 +3,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 USE ieee.numeric_std.ALL;
 entity Datamem16b is
 generic ( N: integer := 3; M: integer := 16);
-port(addDM:  in  std_logic_vector(N-1  downto  0);  --  Addressess  to  write/read dataDM: in std_logic_vector(2*M-1 downto 0); -- Data to write into memory
+port(addDM:  in  std_logic_vector(N-1  downto  0);  --  Addressess  to  write/read 
+dataDM: in std_logic_vector(2*M-1 downto 0); -- Data to write into memory
 WE_DM: in std_logic; 
 CLOCK: in std_logic; 
 dataDM:  out  std_logic_vector  (2*M-1  downto  0)
